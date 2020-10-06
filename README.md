@@ -1,5 +1,3 @@
-# exch
-
 o	Managing 7200+ mailbox across the organization access via OWA, OUTLOOK, Active sync mobile devices. 
 
 
@@ -268,6 +266,7 @@ Verify Required Services are Running
 
 
 Verify End to End Mail Delivery
+. Test-Mailflow 
 . Test-Mailflow E15MB1 -TargetMailboxServer E15MB2 [Test mail flow between two Mailbox servers]
 . Test-Mailflow E15MB1 -TargetDatabase "Mailbox Database 2" [test specify database]
 . Test-Mailflow E15MB1 -TargetEmailAddress paul.cunningham@exchange2013demo.com [testing mail flow to an email address]
@@ -301,6 +300,19 @@ Verify the Mailbox Replication Service
 
 Testing the Send Connector
 . https://testconnectivity.microsoft.com/tests/exchange
+
+Backup exchange
+. get-mailboxdatabase -status | select name,lastfull*,lastinc*, | ft -auto 
+
+Transport Log checking
+. get-transportserver | select name,messagetracking*
+
+Message tracking log searches
+. 	$servers = get-exchangeserver
+	$servers | get-messagetrackinglog -sender emailadre -start (get-date).addhours(-2)
+
+. 	$msg = $servers | get-messagetrackinglog -sender emailadre -start (get-date).addhours(-2)
+	$msg | sort timestamp  | fl [complete info about msg]
 
 
 -----------------------------------------------
