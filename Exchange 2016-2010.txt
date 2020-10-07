@@ -1,0 +1,52 @@
+
+https://www.slideshare.net/kemptechnologies/top-15-exchange-questions-that-senior-admin-ask-jaap-wesselius
+
+
+Always use the requirements calculator when designing an Exchange environment 
+	• https://exchangeloadbalancer.com/exchange-role- calculator/ (The Exchange Role Size calculator) 
+	• https://kemptechnologies.com/loadmaster-sizing- guide/ (Load Balancer Sizing Guide) 
+	• For large environments: better not use virtualization! 
+	• Use Jetstress for validating your storage design 1. BEST PRACTICES FOR INSTALLING EXCHANGE
+    
+BEST PRACTICES FOR INSTALLING EXCHANGE	
+	• Use proper 3rd party SSL certificates (like DigiCert for example) 
+	• Use unattended setup 	
+	• Document your setup procedure 
+	• Use Michel’s PowerShell script (http://bit.ly/ UnAttended) 
+	• Use Desired State Configuration for larger environments 
+	• Make sure you have a proper patch management solution 
+
+HOW CAN EXCHANGE 2010 COEXIST WITH 2016 
+	• Exchange 2010 can coexist with Exchange 2016 Exchange 2010/2016 is using down level proxy mechanism
+
+Shameless plug: http://bit.ly/POP3Telnet
+
+WHAT SPAM PROTECTION IS AVAILABLE WITH EXCHANGE 2016 There is some anti-malware protection in Exchange 2016 Use Get-MalwareFilteringServer, Get-MalwareFilterPolicy and Get-MailwareFilterRule to check details Edge Transport server is very limited for anti-spam Can do some RBL and whitelist/blacklist and ‘some’ content filtering Mostly used as an SMTP server in DMZ scenario You always need separate anti-malware solution
+
+WHAT SPAM PROTECTION IS AVAILABLE WITH EXCHANGE 2016 Third party solution can be on-premises or online Exchange Online Protection Anti-malware, DKIM signing/verify, DMARC validation On-premise solutions Cisco Email Security Appliance (ESA, aka IronPort) Anti-malware, DKIM signing/verify, DMARC validation Beware: Exchange 2016 does not support DKIM and DMARC Think about user education There’s no technical solution for user inability!
+
+WHAT IS TARPITTING WHAT IS TARPITTING? WHY AM I BEING TARPITTED? HOW TO BYPASS A TARPIT INTERVAL? Tarpitting is deliberately slowing down SMTP responses on the Receive Connector  (default 5 seconds) This will frustrate malware  sending hosts Helps protecting against directory harvesting Bypassing Tarpit interval might not be a good idea (whitelist maybe?) Change using the Set- ReceiveConnector command
+
+
+BEST WAYS TO ACHIEVE  HIGH AVAILABILITY PART 1: PROTOCOL LOAD BALANCING •Use load balancer for incoming request •Distribute request amongst multiple Exchange servers •Will load balance and overcome server failure SPLIT HA INTO TWO PARTS:
+
+
+HOW TO ENSURE  SITE RESILIENCY Using multiple datacenters you can create site resiliency Use the Exchange Preferred Architecture  http://bit.ly/ExchangePA • Namespace design • Bound namespace – users connect to a particular datacenter like emea.contoso.com or us.contoso.com • Unbound namespace – users connect to any datacenter like mail.contoso.com
+
+
+HOW TO ENSURE  SITE RESILIENCY This has impact on DNS and load balancing design Use an Active Directory site per datacenter Transport Site Resilience via Shadow Redundancy and Safety Net can only be achieved when DAG members are in multiple sites Take care about network latency between datacenters
+
+
+HOW TO CONFIGURE SMTP RELAY IN EXCHANGE That’s not too difficult, but make sure you’re not creating an internet facing open relay server (you’ll be blacklisted in minutes) The Default Receive Connector accepts anonymous connections and relays mail to internal recipients (Accepted Domain) Your multi-functional devices can use this for internal delivery
+
+
+HOW TO CONFIGURE SMTP RELAY IN EXCHANGE For anonymous delivery to external recipients you need to create a new, dedicated Receive Connector  (I prefer not to fiddle around with default connectors) And, new Receive Connector means additional IP address  (Cannot have two Receive Connectors listening to same IP address and Port Number)
+
+HOW TO CONFIGURE SMTP RELAY IN EXCHANGE Restrict access to new Receive Connector on IP basis Grant the ms-Ech-SMTP-Accept-Any-Recipient permission to "NT AUTHORITYANONYMOUS LOGON" user on new Receive Connector Get-ReceiveConnector –Identity "Relay Connector (EXCH01)" | Add-ADPermission -User "NT AUTHORITY ANONYMOUS LOGON" -ExtendedRights “ms-Exch-SMTP-Accept- Any-Recipient" Another shameless plug: http://bit.ly/SMTPRelay
+
+
+THE BEST FREE TOOLS  FOR EXCHANGE Remote Connectivity Analyzer (aka.ms/exrca)  (Very nice SMTP header analyzer) Mxtoolbox.com Exchange Environment Report Tool (by Steve Goodman) SMTP Protocol logging Code projects (by Paul Cunningham) CheckTLS.com Ssl-checker.online-domain-tools.com https://www.checktls.com/assuretls.html
+
+
+
+KEMP RESOURCES Exchange Load Balancing:  https://kemptechnologies.com/microsoft-load- balancing/load-balancing-microsoft-exchange/ Exchange Resources:  https://exchangeloadbalancer.com/ MSExchange.org Resources:  http://www.msexchange.org/loadbalancing/ Dell Load Balancer Store:   http://www.dell.com/load-balancers

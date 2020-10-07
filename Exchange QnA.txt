@@ -1,0 +1,165 @@
+https://ganeshnadarajanblog.wordpress.com/2017/12/20/100-active-directory-interview-questions-with-answers/
+https://jaapwesselius.com/2012/03/09/telnet-for-pop3-and-imap4/
+
+
+
+Active Directory database is divided into different partitions such as Schema partition, Domain partition, and Configuration partition. Apart from these partitions, we can create Application partition based on the requirement.
+
+
+
+
+Sender Frame Work Policy (SPF) is used to validate all incoming email from the Internet. It checks email to make sure that they are received from a host authorized to send email for that specific domain.  This helps to protect against phishing and spamming emails being sent to users. SPF information is published in public on Internet DNS servers via a TXT record. Exchange Servers should be configured to validate SPF records before accepting email from any domain and should reject any email if the SPF record is not configured. 
+
+SPF can prevent domain spoofing. SPF has three major elements: a policy framework as its name implies, an authentication method and specialized headers in the actual email itself that convey this information
+
+There are four types of email abuse commonly associated with email sender forgery:
+
+    Spam (unsolicited bulk email & unsolicited commercial email)
+    Fraudsters (419 scams)
+    Malware (adware, zero days, viruses, trojans, etc.)
+    Phishers (spear-phishing)
+
+
+DomainKeys Identified Mail (DKIM) ensures that the content of your emails remains trusted and hasn’t been tampered with or compromised. DKIM is also a TXT record signature that builds trust between the sender and the receiver.
+DKIM proves three things:
+
+    The contents of an email have not been tampered with.
+    The headers in the email have not changed since the original sender sent and that there is no new “from” domain.
+    The sender of the email owns the DKIM domain, or is authorized by the owner of that domain.
+
+
+
+
+
+
+Forget to check emails struck in the queue
+
+Email can often get struck in the transport queue for various reasons. It could be because a target server is not reachable, not accepting new connections, or emails.  It is important to keep a check on these queues and take the necessary action to fix any issues to clear the queues. 
+
+
+Forget to implement SMTP gateway and expose Exchange Hub server directly
+
+Exchange transport servers are configured to accept and send email via the Internet. Since these servers are located in the core network, it is not recommended to expose them directly to the Internet. It is recommended to configure an Edge server or 3rd party gateway  SMTP server to route email via the Internet. The gateway server can also add an additional layer of security to scan incoming emails for spam and phishing threats
+
+
+
+
+++++++
+
+1. Plan on how to implement Office 365
+
+Begin your O365 implementation project plan by collecting information about your current IT environment. Effective deployment plans can’t be created without fully understanding why you’re migrating and what needs to happen during the switch.
+
+ 
+Get everyone on board
+
+Schedule an “Implement Office 365” kickoff meeting to familiarize your deployment team members with the overall goals and scope of the project. Use this meeting to clarify and communicate responsibilities.
+
+ 
+Discover your IT infrastructure   
+
+A major step in your pre-migration checklist is to collect facts and figures about your existing IT environment to understand the technology solutions implemented by your company. Check if your on-premises environment meets the requirements for the setup by considering these areas:
+
+        Servers and components  
+        Network architecture and DNS  
+        Authentication solutions  
+        Directory design  
+        Bandwidth  
+        Mail routing  
+        Certificates  
+        Hardware and software  
+        Mail and other client applications  
+        Mail archiving and compliance  
+
+Microsoft provides automated Office 365 readiness checks to determine if your on-premises environment meets its requirements and informs you of any issues that might impede your Office 365 deployment checklist.
+
+Another source of support for implementation is the Microsoft Assessment and Planning (MAP) toolkit. Offered as an automated, multi-product planning and assessment tool, it delivers detailed readiness assessment reports, along with comprehensive hardware and software information, and actionable advice to help you speed up your IT infrastructure planning process and collect more information on assets residing within your current on-premises environment.
+
+    Strategize your email migration project
+    Plan ahead and evaluate if you need to purchase any third-party email migration toolsets and check on hardware requirements.  
+    Assess mailbox size and item counts
+    Identify the size of mailboxes and the number of items in mailboxes that you will migrate to Office 365 (consider mailbox size and item count and available network bandwidth).
+    Identify existing business-related content that needs to be migrated
+    Decide which files, folders, and other content need to be moved. If you plan to migrate Office templates, be aware that upgrading your Office client could lead to file format changes and issues when trying to launch built-in macros in a template. 
+    Learn about different options for user identity and account provisioning 
+    Office 365 provides several mechanisms to add employees to the service and manage user accounts.  
+    Define your email coexistence strategy 
+    For companies with Exchange Server environments, Exchange online migration project plans are made easy by email coexistence, a key feature offered by Office 365. Email coexistence allows a connection to be established between the on-premises environment and Exchange Online. 
+    Test network bandwidth 
+    Test the bandwidth of your company network to calculate migration velocity.  
+    Choose your mobile platforms 
+    Plan for any changes required to the mobile platforms used by your company. Exchange migration to Office 365 checklists need to ensure Microsoft Exchange ActiveSync is allowing employees to synchronize their mobile devices with their Exchange Online mailboxes.
+    Work a communications plan into your Office 365 strategy
+    Documents or emails that simply alert employees to your switch aren’t going to go far enough to secure user adoption. You need to schedule regular digital and in-person alerts to inform them when they need to start working with Office 365 and provide clear instructions showing how to make the most of their switch to the cloud.
+
+2. Prepare your move to Office 365 
+    Add and verify your domain name
+    First up for phase two of your checklist, add your domain through the Microsoft Online Services Portal and create the DNS records to route domain traffic to Office 365.
+    Clean up your on-premises Active Directory for synchronization
+    Prepare your on-premises Active Directory (and update, if necessary) for synchronization with Office 365.
+    Enable single sign-on
+    Install and configure identity federation servers on-premises and activate the single sign-on service.
+    Install the Directory Synchronization Tool and synchronize
+    Install and configure Directory synchronization servers on-premises and activate Directory synchronization to provision user accounts if your Exchange to Office 365 migration project plan is hybrid in its nature
+
+Configure your email coexistence 
+Install and configure Exchange hybrid servers on-premises to enable communication between your existing Exchange servers and Exchange Online. 
+Activate your Sharepoint online rollout plan 
+Ensure your deployment project plans ahead for the deployment of any custom SharePoint solutions. Your O365 Sharepoint implementation plan should also cover the migration of existing SharePoint content.
+Configure Online IM services
+Configure domain federation and public IM connectivity settings to boost your network for conferencing.
+Install client applications and desktop setup
+Last up on phase two of your O365 checklist is to determine if client applications are properly updated and configured for Office 365
+
+
+3. Take the final steps in your O365 migration checklist
+
+Be sure to plan which content needs to be moved, and include these vital steps on your implementation checklist:
+
+        Assign licenses
+        If you have not already done so, assign licenses to employees through the Microsoft Online Services Portal to grant access to Office 365. Enable Exchange Online, SharePoint Online, and Online IM services.
+        Inform staff about the final phase of your project
+        Plan office education sessions that update employees on when the migration is going to happen, how long the process will take, and what they need to do to switch to the new platform.
+        Migrate mailboxes
+        Use your selected Exchange migration tools or third-party solutions to migrate to Exchange Online. To boost migration velocity of mailbox content, you may need to reduce the size of mailboxes.
+        Move existing files and folders
+        Use third-party migration tools to move existing Office documents and templates from your current on-premises environment to Office 365.
+        Change DNS records 
+        Once you have completed all migrations, change your DNS records to your domain registrar. 
+        Configure mobile phones and devices for Office 365 
+        Set up user mobile phones along with any other mobile devices to access emails and Office documents on the go. Alternatively, email migration, plans/templates should set out clear instructions to employees on how to connect from their mobile devices. Remember: to launch corporate templates through Office 365 on mobile devices, you may need to rethink your template management approach, especially if your Office templates contain VBA code. 
+        Factor post-migration service testing into your O365 implementation roadmap
+        After migrations are completed, perform full-scale testing of the service functionality. Your Office 365 test plan should make sure all your plug-ins have transferred over. If not, your need to ensure your testing checklist covers a reinstallation process.
+        Check your Office templates work in Office 365
+        Test cases or scenarios where your most important Office templates will be used. See if the templates launch correctly and examine whether there have been any changes in style and formatting. If some of your Office templates link to other Office files or integrate with CRM or ERP systems, test those connections too.
+
+    Add email signatures
+    Email signatures don’t always migrate easily. Check yours and add a new one if required. 
+    Stay secure
+    Check all your content is protected by your new security system and you’ve set the correct permission settings for individuals departments and employees.
+
+++++++++++++++++++++++++
+
+After the Hybrid Configuration wizard completes, we’ll expect the following key tasks to be complete:• The Hybrid Agent installed and configured, with an endpoint defined for Exchange Online to access our on-premises organization over HTTPS• The Mailbox Replication Service (MRS) Proxy enabled on all Exchange Web Services virtual directories, allowing Mailbox Moves to take place.• Federated Sharing enabled for Free/Busy between on-premises and Office 365 and to allow read-only Calendar sharing• Remote Domain configuration to define the email relationship between on-premises and Office 365 – in particular defining our mail.onmicrosoft.com domain as our Office 365 routing domain.• Email Address Policies updated, adding alias@tenant.mail.onmicrosoft.com as a secondary address to all Mailboxes and Mail Users who have policies applied – this will be used for mail routing from on-premises to Exchange Online when we migrate mailboxes.
+• A Send Connector configured from Exchange On-Premises to Exchange Online for our mail.onmicrosoft.com for secure mail routing outbound• Receive Connectors configured to accept mail securely from Exchange Online• Respective Inbound and Outbound Connectors in Exchange Online for secure SMTP between on-premises Send and Receive Connectors.• When Organization Config Transfer is selected, selected policies copied to Exchange Online.
+
+++++++++++++++
+
+https://techcommunity.microsoft.com/t5/exchange-team-blog/checklist-for-troubleshooting-performance-related-issues-in/ba-p/604792
+
+https://markgossa.blogspot.com/2015/12/exchange-2016-database-availability-group-troubleshooting-part1.html
+
+
+Track the Message Queue:	Get-Queue -Identity Submission | Select Identity,Status,MessageCount
+    Creating the Test Mailbox User
+    Using Test-ReplicationHealth to Test DAG Members
+    Using Test-MAPIConnectivity to Test Mailbox Databases
+    Using Test-ServiceHealth to Verify Required Services are Running
+    Using Test-Mailflow to Verify End to End Mail Delivery
+    Using Test-ActiveSyncConnectivity to Verify Exchange ActiveSync
+    Using Test-OutlookWebServices to Verify Web Services Functionality
+    Using Test-MRSHealth to Verify the Mailbox Replication Service
+    Using Test-PowerShellConnectivity to Verify PowerShell Remoting
+
+
+
