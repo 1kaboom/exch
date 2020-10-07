@@ -328,6 +328,9 @@ https://social.technet.microsoft.com/wiki/contents/articles/53958.exchange-serve
 Exchange Server Tools
 https://social.technet.microsoft.com/wiki/contents/articles/990.exchange-server-tools.aspx
 
+. https://eightwone.com/online-tools/
+
+. https://eightwone.com/exchange-toolkit/tools/
 -----------------------------------------------
 -----------------------------------------------
 
