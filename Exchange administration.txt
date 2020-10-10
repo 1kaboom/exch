@@ -1,3 +1,6 @@
+. get-ecpvirtualdirectory | fl name,InternalUrl,ExternalUrl
+
+
 o	Managing 7200+ mailbox across the organization access via OWA, OUTLOOK, Active sync mobile devices. 
 
 
@@ -304,6 +307,19 @@ Testing the Send Connector
 
 Backup exchange
 . get-mailboxdatabase -status | select name,lastfull*,lastinc*, | ft -auto 
+. get-mailboxdatabasecopystatus
+
+Restore disabled mailbox 
+. connect-mailbox  -id "name" -database nameDB -user "name"
+
+Restore deleted mailbox to another user
+.1) get-mailboxdatabase | get-mailboxdatabasestatistics | select Displayname,MailboxGUID 
+.2) New-MailboxRestoreRequest -SourceDatabase "MBD01" -SourceStoreMailbox 1d20855f-fd54-4681-98e6-e249f7326ddd -TargetMailbox Ayla
+.3) New-MailboxRestoreRequest -SourceDatabase "MBD01" -SourceStoreMailbox "Tony Smith" -TargetMailbox Tony@contoso.com -TargetRootFolder "NameRestore" -allowlegacyDNmismatch
+.4) get-mailboxrestorerequest | get-MailboxRestoreRequeststatistics
+
+. Get-MailboxStatistics -Database MBD01 | Where {$_.DisconnectReason -eq "SoftDeleted" -or $_.DisconnectReason -eq "Disabled"} | Format-List LegacyDN, DisplayName, MailboxGUID, DisconnectReason
+
 
 Transport Log checking
 . get-transportserver | select name,messagetracking*
@@ -332,6 +348,16 @@ https://social.technet.microsoft.com/wiki/contents/articles/990.exchange-server-
 
 . https://eightwone.com/exchange-toolkit/tools/
 -----------------------------------------------
+
+. Get-ClientAccessServices | fl name,auto*
+
+. Get-ClientAccessServices | Set-ClientAccessServices -AutodiscoverserviceInternalUri https://URL.tld/autodiscover/autodiscover.xml
+
+. Get-Mapivirtualdirectory -server Exchange
+
+. Get-Mapivirtualdirectory | Set-Mapivirtualdirectory -interurl https://url.tld/mapi -externalurl https://url.tld/mapi [restart IISreset ]
+
+
 -----------------------------------------------
 
 
